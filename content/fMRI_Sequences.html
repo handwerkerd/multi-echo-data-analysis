@@ -606,27 +606,23 @@ document.write(`
 <span class="expanded">Hide code cell content</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">create_simple_pulse_seq</span><span class="p">([</span><span class="mi">28</span><span class="p">],</span> <span class="n">read_time</span><span class="o">=</span><span class="mf">17.347</span><span class="p">,</span> <span class="n">n_acq</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Acquiring an fMRI volume&quot;</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig_sample_pulse_seq&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">create_simple_pulse_seq</span><span class="p">([</span><span class="mi">28</span><span class="p">],</span> <span class="n">read_time</span><span class="o">=</span><span class="mf">17.347</span><span class="p">,</span> <span class="n">n_acq</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Acquiring an fMRI volume&quot;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig_sample_pulse_seq&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;fig&#39; is not defined
-</pre></div>
-</div>
 <img alt="../_images/c110e01e68294dacb988db82fda73ba3196c081815acc96055ee44499c0664ab.png" src="../_images/c110e01e68294dacb988db82fda73ba3196c081815acc96055ee44499c0664ab.png" />
 </div>
 </details>
 </div>
+<figure class="align-center" id="fig-sample-pulse-seq">
+<img alt="../_images/c110e01e68294dacb988db82fda73ba3196c081815acc96055ee44499c0664ab.png" src="../_images/c110e01e68294dacb988db82fda73ba3196c081815acc96055ee44499c0664ab.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">A simplified fMRI pulse sequence.</span><a class="headerlink" href="#fig-sample-pulse-seq" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>For the purposes of understanding multi-echo fMRI,
 an fMRI pulse sequence has two main parts.
 The excitation pulse (black) and the readout (green).
@@ -666,7 +662,7 @@ In this figure, the TE is 28ms, but the readout period is acquiring data from ar
 <span class="expanded">Hide code cell content</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">16</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">16</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">read_time</span><span class="p">,</span> <span class="n">x_axis_duration</span> <span class="o">=</span> <span class="n">create_simple_pulse_seq</span><span class="p">([</span><span class="mi">13</span><span class="p">,</span> <span class="mf">31.26</span><span class="p">,</span> <span class="mf">49.52</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;3 echoes. In-slice accelleration=2&quot;</span><span class="p">)</span>
@@ -681,8 +677,17 @@ In this figure, the TE is 28ms, but the readout period is acquiring data from ar
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/eecb9686ddf9b0c94f6672662ea62dc0204bdd2a4f750e35a98a50ae71ec7355.png" src="../_images/eecb9686ddf9b0c94f6672662ea62dc0204bdd2a4f750e35a98a50ae71ec7355.png" />
+</div>
 </details>
 </div>
+<figure class="align-center" id="fig-sample-multiecho-pulse-seq">
+<img alt="../_images/eecb9686ddf9b0c94f6672662ea62dc0204bdd2a4f750e35a98a50ae71ec7355.png" src="../_images/eecb9686ddf9b0c94f6672662ea62dc0204bdd2a4f750e35a98a50ae71ec7355.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">A sample multi-echo fMRI pulse sequence.</span><a class="headerlink" href="#fig-sample-multiecho-pulse-seq" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
