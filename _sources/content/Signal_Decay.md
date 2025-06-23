@@ -402,7 +402,7 @@ The contrast — represented by the distance between the two curves (see green d
 
 ### Plot single-echo data resulting from $S_{0}$ and $T_{2}^{*}$ fluctuations
 
-Let us visualize the case of a single echo acquisition with TE = 30ms. The top panel shows the time series of an example voxel, while the lower panel shows the associated signal magnitude fluctuation at the specific echo time (TE = 30 ms). This shows how fMRI data fluctuates over time.
+Let us visualize the case of a single echo fMRI acquisition with TE = 30ms. The top panel shows the time series of an example voxel , while the lower panel shows the associated signal magnitude fluctuation at the specific echo time (TE = 30 ms). This shows how fMRI data fluctuates over time.
 
 ```{code-cell} ipython3
 :tags: [hide-cell]
@@ -482,7 +482,7 @@ Single-echo data resulting from $S_{0}$ and $T_{2}^{*}$ fluctuations
 
 ### Plot single-echo data and the curve resulting from $S_{0}$ and $T_{2}^{*}$ fluctuations
 
-This shows how single-echo data is a sample from a signal decay curve.
+Building on the previous figure, we visualize here how the signal of a voxel at each time point of a single-echo fMRI scan (TE=30ms) is part of a decay curve. In other words, this shows how single-echo data is a sample from a signal decay curve.
 
 ```{code-cell} ipython3
 :tags: [hide-cell]
@@ -575,7 +575,9 @@ Single-echo data and the curve resulting from $S_{0}$ and $T_{2}^{*}$ fluctuatio
 
 ### Plot single-echo data, the curve, and the $S_{0}$ and $T_{2}^{*}$ values resulting from $S_{0}$ and $T_{2}^{*}$ fluctuations
 
-This shows how changes in fMRI data can be driven by both S0 and T2* fluctuations.
+We are still in the case of a single-echo fMRI acquisition with TE=30ms. For a given voxel, the signal magnitude $S(t)$ is linked with $S_0(t)$ and $T_2^{\*}$ through the formula: $S(t, TE) = S_0(t) * e^{\frac{-TE}{T_2^{\*}}} + noise$.
+Both factors of the product - $S_0$ and the exponential with $T_2^{\*}$ - capture local fluctuations happening during MRI acquisition, but from different origins.
+The figure represents how the signal of a voxel is associated to $S_0$ and $T_2^{\*}$, showing how changes in fMRI data can be driven by both factors.
 
 ```{code-cell} ipython3
 :tags: [hide-cell]
