@@ -428,13 +428,12 @@ document.write(`
 <p>This is a section to test out code and visualizations that will end up in the main Juypter book.
 Nothing here will be accessible in the book,
 but it will be easier for co-authors to test and share visualizations without need to re-render the html for each change.</p>
-<p>While this book is a work-in-progress,
-this can also be used to create figures that can be used as placeholders in the Jupyter book
-so that the markdown text includes figures until we get rendering working in a fork of the code.</p>
-<p>As notebooks and figures are created here,
-add notes to this readme to guide later merging into the main book content directory.
-The recommended convention is to name a notebook to match the filename and section in the content directory.
-That is <code class="docutils literal notranslate"><span class="pre">./notebooks/fMRI_Sequences_pulse_sequence_visualizations.ipynb</span></code> would include figures that will migrate to <code class="docutils literal notranslate"><span class="pre">./content/fMRI_Sequences.md</span></code></p>
+<p>Notebooks should have similar names to the markdown files they are testing visualizations for.
+That is <code class="docutils literal notranslate"><span class="pre">./notebooks/fMRI_Sequences_pulse_sequence_visualizations.ipynb</span></code> would include figures that will migrate to <code class="docutils literal notranslate"><span class="pre">./content/fMRI_Sequences.md</span></code>
+If the purpose of a notebook is not obvious by name,
+use this readme to give context.
+If figures are stable in the book,
+then the related notebooks here should be deleted.</p>
 </section>
 
     <script type="text/x-thebe-config">
