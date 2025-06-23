@@ -493,7 +493,7 @@ document.write(`
 <h1>BOLD, non-BOLD, and TE-dependence with tedana<a class="headerlink" href="#bold-non-bold-and-te-dependence-with-tedana" title="Link to this heading">#</a></h1>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>This chapter should differentiate itself from Signal_Decay by focusing on the application of <a class="reference internal" href="#equation-monoexponential-decay">(1)</a>
+<p>This chapter should differentiate itself from Signal_Decay by focusing on the application of <a class="reference internal" href="#equation-monoexponential-decay">(2)</a>
 to decompositions, rather than raw signal compared between active and inactive states.</p>
 <p>We may want to describe adaptive masking, data whitening, the model fit metrics, and post-processing methods (e.g., MIR)
 in this page as well.</p>
@@ -524,7 +524,7 @@ is generally considered too noisy for practical application.</p></li>
 <p>This notebook uses simulated T2*/S0 manipulations to show how TE-dependence is leveraged to denoise multi-echo data.</p>
 <p>The equation for how signal is dependent on changes in S0 and T2*:</p>
 <div class="math notranslate nohighlight" id="equation-monoexponential-decay">
-<span class="eqno">(1)<a class="headerlink" href="#equation-monoexponential-decay" title="Link to this equation">#</a></span>\[S(t, TE_k) = \bar{S}(TE_k) * (1 + \frac{{\Delta}{S_0}(t)}{\bar{S}_0} - {\Delta}{R_2^*}(t)*TE_k)\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-monoexponential-decay" title="Link to this equation">#</a></span>\[S(t, TE_k) = \bar{S}(TE_k) * (1 + \frac{{\Delta}{S_0}(t)}{\bar{S}_0} - {\Delta}{R_2^*}(t)*TE_k)\]</div>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -729,33 +729,33 @@ At some point, I would like to dig into why those parameter estimates are equiva
 <section id="te-independence-model">
 <h2>TE-independence model<a class="headerlink" href="#te-independence-model" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight" id="equation-te-independence-model1">
-<span class="eqno">(2)<a class="headerlink" href="#equation-te-independence-model1" title="Link to this equation">#</a></span>\[\frac{{\Delta}S(TE_k)}{\bar{S(TE_k)}} = \frac{{\Delta}S_0}{S_0}\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-te-independence-model1" title="Link to this equation">#</a></span>\[\frac{{\Delta}S(TE_k)}{\bar{S(TE_k)}} = \frac{{\Delta}S_0}{S_0}\]</div>
 <div class="math notranslate nohighlight" id="equation-te-independence-model2">
-<span class="eqno">(3)<a class="headerlink" href="#equation-te-independence-model2" title="Link to this equation">#</a></span>\[{\Delta}S(TE_k) = {\bar{S}(TE_k)}\frac{{\Delta}S_0}{S_0}\]</div>
+<span class="eqno">(4)<a class="headerlink" href="#equation-te-independence-model2" title="Link to this equation">#</a></span>\[{\Delta}S(TE_k) = {\bar{S}(TE_k)}\frac{{\Delta}S_0}{S_0}\]</div>
 <p><span class="math notranslate nohighlight">\(\frac{{\Delta}S_0}{S_0}\)</span> is a scalar (i.e., doesn’t change with TE), so we ignore that,
 which means we only use <span class="math notranslate nohighlight">\({\bar{S}(TE_k)}\)</span> (mean echo-wise signal).</p>
 <p>Thus,</p>
 <div class="math notranslate nohighlight" id="equation-te-independence-model3">
-<span class="eqno">(4)<a class="headerlink" href="#equation-te-independence-model3" title="Link to this equation">#</a></span>\[{\Delta}S(TE_k) = {\bar{S}(TE_k)} * X\]</div>
+<span class="eqno">(5)<a class="headerlink" href="#equation-te-independence-model3" title="Link to this equation">#</a></span>\[{\Delta}S(TE_k) = {\bar{S}(TE_k)} * X\]</div>
 <p>and for TEDPCA/TEDICA,</p>
 <div class="math notranslate nohighlight" id="equation-te-independence-model4">
-<span class="eqno">(5)<a class="headerlink" href="#equation-te-independence-model4" title="Link to this equation">#</a></span>\[PE(TE_k) = {\bar{S}(TE_k)} * X\]</div>
+<span class="eqno">(6)<a class="headerlink" href="#equation-te-independence-model4" title="Link to this equation">#</a></span>\[PE(TE_k) = {\bar{S}(TE_k)} * X\]</div>
 <p>Lastly, we fit X to the data and evaluate model fit.</p>
 </section>
 <section id="te-dependence-model">
 <h2>TE-dependence model<a class="headerlink" href="#te-dependence-model" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight" id="equation-te-dependence-model1">
-<span class="eqno">(6)<a class="headerlink" href="#equation-te-dependence-model1" title="Link to this equation">#</a></span>\[\frac{{\Delta}S(TE_k)}{\bar{S}(TE_k)} = -{\Delta}{R_2^*}*TE_k\]</div>
+<span class="eqno">(7)<a class="headerlink" href="#equation-te-dependence-model1" title="Link to this equation">#</a></span>\[\frac{{\Delta}S(TE_k)}{\bar{S}(TE_k)} = -{\Delta}{R_2^*}*TE_k\]</div>
 <div class="math notranslate nohighlight" id="equation-te-dependence-model2">
-<span class="eqno">(7)<a class="headerlink" href="#equation-te-dependence-model2" title="Link to this equation">#</a></span>\[{\Delta}S(TE_k) = {\bar{S}(TE_k)} * -{\Delta}{R_2^*}*TE_k\]</div>
+<span class="eqno">(8)<a class="headerlink" href="#equation-te-dependence-model2" title="Link to this equation">#</a></span>\[{\Delta}S(TE_k) = {\bar{S}(TE_k)} * -{\Delta}{R_2^*}*TE_k\]</div>
 <p><span class="math notranslate nohighlight">\(-{\Delta}{R_2^*}\)</span> is a scalar, so we ignore it,
 which means we only use <span class="math notranslate nohighlight">\({\bar{S}(TE_k)}\)</span> (mean echo-wise-signal) and <span class="math notranslate nohighlight">\(TE_k\)</span> (echo time in milliseconds).</p>
 <p>Thus,</p>
 <div class="math notranslate nohighlight" id="equation-te-dependence-model3">
-<span class="eqno">(8)<a class="headerlink" href="#equation-te-dependence-model3" title="Link to this equation">#</a></span>\[{\Delta}S(TE_k) = {\bar{S}(TE_k)}*TE_k * X\]</div>
+<span class="eqno">(9)<a class="headerlink" href="#equation-te-dependence-model3" title="Link to this equation">#</a></span>\[{\Delta}S(TE_k) = {\bar{S}(TE_k)}*TE_k * X\]</div>
 <p>and for TEDPCA/TEDICA,</p>
 <div class="math notranslate nohighlight" id="equation-te-dependence-model4">
-<span class="eqno">(9)<a class="headerlink" href="#equation-te-dependence-model4" title="Link to this equation">#</a></span>\[PE(TE_k) = {\bar{S}(TE_k)}*TE_k * X\]</div>
+<span class="eqno">(10)<a class="headerlink" href="#equation-te-dependence-model4" title="Link to this equation">#</a></span>\[PE(TE_k) = {\bar{S}(TE_k)}*TE_k * X\]</div>
 <p>Lastly, we fit X to the data and evaluate model fit.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -1033,12 +1033,12 @@ Kappa: 31513.966302911744
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5ed96423b835865ede54b57a08e4cfed2661f286ce95d6e5c20b3f8a04e11328.png" src="../_images/5ed96423b835865ede54b57a08e4cfed2661f286ce95d6e5c20b3f8a04e11328.png" />
+<img alt="../_images/5f5b9d0bd396e296969881d36b73819ee4fe2f806bcb96da4538f0117cad3559.png" src="../_images/5f5b9d0bd396e296969881d36b73819ee4fe2f806bcb96da4538f0117cad3559.png" />
 </div>
 </details>
 </div>
 <figure class="align-center" id="fig-component-curves">
-<img alt="../_images/5ed96423b835865ede54b57a08e4cfed2661f286ce95d6e5c20b3f8a04e11328.png" src="../_images/5ed96423b835865ede54b57a08e4cfed2661f286ce95d6e5c20b3f8a04e11328.png" />
+<img alt="../_images/5f5b9d0bd396e296969881d36b73819ee4fe2f806bcb96da4538f0117cad3559.png" src="../_images/5f5b9d0bd396e296969881d36b73819ee4fe2f806bcb96da4538f0117cad3559.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 18 </span><span class="caption-text">Now let’s apply this approach to components</span><a class="headerlink" href="#fig-component-curves" title="Link to this image">#</a></p>
 </figcaption>
@@ -1075,12 +1075,12 @@ Kappa: 31513.966302911744
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fc3cbf5d8f357e555ca2358a7dbe72ecaf664c60d48c56274fefbfc80df40ef4.png" src="../_images/fc3cbf5d8f357e555ca2358a7dbe72ecaf664c60d48c56274fefbfc80df40ef4.png" />
+<img alt="../_images/eb5ae1b22782bae4a7f253d3a7b19ee7ea245125a6694b0e95ea37c0505c6daf.png" src="../_images/eb5ae1b22782bae4a7f253d3a7b19ee7ea245125a6694b0e95ea37c0505c6daf.png" />
 </div>
 </details>
 </div>
 <figure class="align-center" id="fig-component-curves-2">
-<img alt="../_images/fc3cbf5d8f357e555ca2358a7dbe72ecaf664c60d48c56274fefbfc80df40ef4.png" src="../_images/fc3cbf5d8f357e555ca2358a7dbe72ecaf664c60d48c56274fefbfc80df40ef4.png" />
+<img alt="../_images/eb5ae1b22782bae4a7f253d3a7b19ee7ea245125a6694b0e95ea37c0505c6daf.png" src="../_images/eb5ae1b22782bae4a7f253d3a7b19ee7ea245125a6694b0e95ea37c0505c6daf.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text">Now let’s apply this approach to components again.</span><a class="headerlink" href="#fig-component-curves-2" title="Link to this image">#</a></p>
 </figcaption>
@@ -1114,12 +1114,12 @@ Kappa: 31513.966302911744
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/add87ce0eee101df87f8fe17c235d2264e61d272ffdc592d512ca37486c41ace.png" src="../_images/add87ce0eee101df87f8fe17c235d2264e61d272ffdc592d512ca37486c41ace.png" />
+<img alt="../_images/f96f0a52dda0fff42b7881f68db143c6aaf8999af60dc077c1cce716d113ea91.png" src="../_images/f96f0a52dda0fff42b7881f68db143c6aaf8999af60dc077c1cce716d113ea91.png" />
 </div>
 </details>
 </div>
 <figure class="align-center" id="fig-component-curves-3">
-<img alt="../_images/add87ce0eee101df87f8fe17c235d2264e61d272ffdc592d512ca37486c41ace.png" src="../_images/add87ce0eee101df87f8fe17c235d2264e61d272ffdc592d512ca37486c41ace.png" />
+<img alt="../_images/f96f0a52dda0fff42b7881f68db143c6aaf8999af60dc077c1cce716d113ea91.png" src="../_images/f96f0a52dda0fff42b7881f68db143c6aaf8999af60dc077c1cce716d113ea91.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 20 </span><span class="caption-text">Now let’s apply this approach to components again.</span><a class="headerlink" href="#fig-component-curves-3" title="Link to this image">#</a></p>
 </figcaption>
@@ -1154,12 +1154,12 @@ Kappa: 31513.966302911744
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/eac7408393e30d2c645045e27970d2f3502fb113fa9e1cf3020da62ec3093b7c.png" src="../_images/eac7408393e30d2c645045e27970d2f3502fb113fa9e1cf3020da62ec3093b7c.png" />
+<img alt="../_images/b76b041b71929316e9fd315a6221c8af55950adf6c73c59b9b2d820f1a2f54b3.png" src="../_images/b76b041b71929316e9fd315a6221c8af55950adf6c73c59b9b2d820f1a2f54b3.png" />
 </div>
 </details>
 </div>
 <figure class="align-center" id="fig-component-curves-4">
-<img alt="../_images/eac7408393e30d2c645045e27970d2f3502fb113fa9e1cf3020da62ec3093b7c.png" src="../_images/eac7408393e30d2c645045e27970d2f3502fb113fa9e1cf3020da62ec3093b7c.png" />
+<img alt="../_images/b76b041b71929316e9fd315a6221c8af55950adf6c73c59b9b2d820f1a2f54b3.png" src="../_images/b76b041b71929316e9fd315a6221c8af55950adf6c73c59b9b2d820f1a2f54b3.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 21 </span><span class="caption-text">Now let’s apply this approach to components again.</span><a class="headerlink" href="#fig-component-curves-4" title="Link to this image">#</a></p>
 </figcaption>
