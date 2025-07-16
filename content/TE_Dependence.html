@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
@@ -526,10 +526,10 @@ is generally considered too noisy for practical application.</p></li>
 <div class="math notranslate nohighlight" id="equation-monoexponential-decay">
 <span class="eqno">(2)<a class="headerlink" href="#equation-monoexponential-decay" title="Link to this equation">#</a></span>\[S(t, TE_k) = \bar{S}(TE_k) * (1 + \frac{{\Delta}{S_0}(t)}{\bar{S}_0} - {\Delta}{R_2^*}(t)*TE_k)\]</div>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
@@ -573,10 +573,10 @@ Info : ./../data/multi-echo-data-analysis already downloaded
 </details>
 </div>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulate data</span>
@@ -612,10 +612,10 @@ Info : ./../data/multi-echo-data-analysis already downloaded
 <section id="plot-simulations-of-bold-and-non-bold-signals-as-a-function-of-echo-time">
 <h2>Plot simulations of BOLD and non-BOLD signals as a function of echo time<a class="headerlink" href="#plot-simulations-of-bold-and-non-bold-signals-as-a-function-of-echo-time" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change s0</span>
@@ -758,10 +758,10 @@ which means we only use <span class="math notranslate nohighlight">\({\bar{S}(TE
 <span class="eqno">(10)<a class="headerlink" href="#equation-te-dependence-model4" title="Link to this equation">#</a></span>\[PE(TE_k) = {\bar{S}(TE_k)}*TE_k * X\]</div>
 <p>Lastly, we fit X to the data and evaluate model fit.</p>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X1</span> <span class="o">=</span> <span class="p">(</span><span class="n">mean_sig</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>  <span class="c1"># Model 1</span>
@@ -778,10 +778,10 @@ which means we only use <span class="math notranslate nohighlight">\({\bar{S}(TE
 <h2>Fitted curves for S0-perturbed signal<a class="headerlink" href="#fitted-curves-for-s0-perturbed-signal" title="Link to this heading">#</a></h2>
 <p>The predicted curve for the S0 model matches the real curve perfectly!</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">d_sig2</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>  <span class="c1"># (E x S)</span>
@@ -832,10 +832,10 @@ What’s with this mismatch?</p>
 <p>It seems like the mismatch increases as the difference between the fluctuating volume’s R2 and the mean R2 increase.
 The fitted curve seems to actually match the mean signal, not the perturbed signal!</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">d_sig3</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>  <span class="c1"># (E x S)</span>
@@ -871,10 +871,10 @@ Kappa: 31513.966302911744
 </div>
 </div>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">))</span>
@@ -934,10 +934,10 @@ Kappa: 31513.966302911744
 </figcaption>
 </figure>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lstsq gives same result as model fit method by kundu, which is great to see</span>
@@ -959,10 +959,10 @@ Kappa: 31513.966302911744
 <section id="now-let-s-apply-this-approach-to-components">
 <h2>Now let’s apply this approach to components<a class="headerlink" href="#now-let-s-apply-this-approach-to-components" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulate data</span>
@@ -1033,21 +1033,21 @@ Kappa: 31513.966302911744
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/825d33b24ad75ec058972b363ba327ea667380c8776c3096de3e1afdefd2da1f.png" src="../_images/825d33b24ad75ec058972b363ba327ea667380c8776c3096de3e1afdefd2da1f.png" />
+<img alt="../_images/9f07f67bda3cde6bfb573aa5ed9d86f6d0ae24101e07626051f7bec9ca39a791.png" src="../_images/9f07f67bda3cde6bfb573aa5ed9d86f6d0ae24101e07626051f7bec9ca39a791.png" />
 </div>
 </details>
 </div>
 <figure class="align-center" id="fig-component-curves">
-<img alt="../_images/825d33b24ad75ec058972b363ba327ea667380c8776c3096de3e1afdefd2da1f.png" src="../_images/825d33b24ad75ec058972b363ba327ea667380c8776c3096de3e1afdefd2da1f.png" />
+<img alt="../_images/9f07f67bda3cde6bfb573aa5ed9d86f6d0ae24101e07626051f7bec9ca39a791.png" src="../_images/9f07f67bda3cde6bfb573aa5ed9d86f6d0ae24101e07626051f7bec9ca39a791.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 18 </span><span class="caption-text">Now let’s apply this approach to components</span><a class="headerlink" href="#fig-component-curves" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interval</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">n_echoes</span> <span class="o">/</span> <span class="mi">7</span><span class="p">))</span>
@@ -1075,21 +1075,21 @@ Kappa: 31513.966302911744
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2a1cd341fbd03b7eba3d828f6cb97e942b7066eba24fbaa2ffe5eceee03e3fcf.png" src="../_images/2a1cd341fbd03b7eba3d828f6cb97e942b7066eba24fbaa2ffe5eceee03e3fcf.png" />
+<img alt="../_images/42d5065bbb3accfc0ec21d050e45c208d3666edd8a920f23b806c3ece9a91fdf.png" src="../_images/42d5065bbb3accfc0ec21d050e45c208d3666edd8a920f23b806c3ece9a91fdf.png" />
 </div>
 </details>
 </div>
 <figure class="align-center" id="fig-component-curves-2">
-<img alt="../_images/2a1cd341fbd03b7eba3d828f6cb97e942b7066eba24fbaa2ffe5eceee03e3fcf.png" src="../_images/2a1cd341fbd03b7eba3d828f6cb97e942b7066eba24fbaa2ffe5eceee03e3fcf.png" />
+<img alt="../_images/42d5065bbb3accfc0ec21d050e45c208d3666edd8a920f23b806c3ece9a91fdf.png" src="../_images/42d5065bbb3accfc0ec21d050e45c208d3666edd8a920f23b806c3ece9a91fdf.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text">Now let’s apply this approach to components again.</span><a class="headerlink" href="#fig-component-curves-2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interval</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">n_echoes</span> <span class="o">/</span> <span class="mi">7</span><span class="p">))</span>
@@ -1114,21 +1114,21 @@ Kappa: 31513.966302911744
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0ba31d9825d0708ee39dd956ff49ff3a18b628066f27950e42f0d6a8477a16a7.png" src="../_images/0ba31d9825d0708ee39dd956ff49ff3a18b628066f27950e42f0d6a8477a16a7.png" />
+<img alt="../_images/b30b73317b2906ba6699f3a91ca40c5389023201414aeee6bd8da49212ef0700.png" src="../_images/b30b73317b2906ba6699f3a91ca40c5389023201414aeee6bd8da49212ef0700.png" />
 </div>
 </details>
 </div>
 <figure class="align-center" id="fig-component-curves-3">
-<img alt="../_images/0ba31d9825d0708ee39dd956ff49ff3a18b628066f27950e42f0d6a8477a16a7.png" src="../_images/0ba31d9825d0708ee39dd956ff49ff3a18b628066f27950e42f0d6a8477a16a7.png" />
+<img alt="../_images/b30b73317b2906ba6699f3a91ca40c5389023201414aeee6bd8da49212ef0700.png" src="../_images/b30b73317b2906ba6699f3a91ca40c5389023201414aeee6bd8da49212ef0700.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 20 </span><span class="caption-text">Now let’s apply this approach to components again.</span><a class="headerlink" href="#fig-component-curves-3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -1154,12 +1154,12 @@ Kappa: 31513.966302911744
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/29db7420840c89f6eabe78d8fb0d401f2295b55ddbea12651f742974b5a60cb3.png" src="../_images/29db7420840c89f6eabe78d8fb0d401f2295b55ddbea12651f742974b5a60cb3.png" />
+<img alt="../_images/50b7f3ba113546e6407dc87900ed7b5d17306c2cdab2ca92344d2b3dea7d9a36.png" src="../_images/50b7f3ba113546e6407dc87900ed7b5d17306c2cdab2ca92344d2b3dea7d9a36.png" />
 </div>
 </details>
 </div>
 <figure class="align-center" id="fig-component-curves-4">
-<img alt="../_images/29db7420840c89f6eabe78d8fb0d401f2295b55ddbea12651f742974b5a60cb3.png" src="../_images/29db7420840c89f6eabe78d8fb0d401f2295b55ddbea12651f742974b5a60cb3.png" />
+<img alt="../_images/50b7f3ba113546e6407dc87900ed7b5d17306c2cdab2ca92344d2b3dea7d9a36.png" src="../_images/50b7f3ba113546e6407dc87900ed7b5d17306c2cdab2ca92344d2b3dea7d9a36.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 21 </span><span class="caption-text">Now let’s apply this approach to components again.</span><a class="headerlink" href="#fig-component-curves-4" title="Link to this image">#</a></p>
 </figcaption>
