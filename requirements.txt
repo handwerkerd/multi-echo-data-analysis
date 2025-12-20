@@ -7,7 +7,7 @@ matplotlib
 myst_nb
 nilearn
 nitransforms
-pyspfm==1.0.0
+pyspfm==2.0.1
 seaborn
 sphinx>=4
 sphinx-inline-tabs
