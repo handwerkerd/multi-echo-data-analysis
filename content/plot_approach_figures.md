@@ -29,12 +29,12 @@ import nitransforms as nit
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from myst_nb import glue
+from book_utils import glue_figure
 from nilearn import image, masking, plotting
 from tedana.io import load_data, new_nii_like
 from tedana.utils import make_adaptive_mask
 
-data_path = os.path.abspath('../DATA')
+data_path = os.path.abspath('../data')
 
 ted_dir = os.path.join(data_path, "tedana")
 ```
@@ -47,7 +47,7 @@ data_files = sorted(
     glob(
         os.path.join(
             func_dir,
-            "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_echo-*_part-mag_desc-preproc_bold.nii.gz",
+            "sub-24053_ses-1_task-rat_dir-PA_run-01_echo-*_part-mag_desc-preproc_bold.nii.gz",
         ),
     ),
 )
@@ -60,18 +60,18 @@ for f in data_files:
 echo_times = np.round(np.array(echo_times), 2)
 mask_file = os.path.join(
     func_dir,
-    "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_part-mag_desc-brain_mask.nii.gz"
+    "sub-24053_ses-1_task-rat_dir-PA_run-01_part-mag_desc-brain_mask.nii.gz"
 )
 confounds_file = os.path.join(
     func_dir,
-    "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_part-mag_desc-confounds_timeseries.tsv",
+    "sub-24053_ses-1_task-rat_dir-PA_run-01_part-mag_desc-confounds_timeseries.tsv",
 )
 
 # Background anatomical image
 anat_dir = os.path.join(data_path, "ds006185/sub-24053/ses-1/anat/")
 xfm = os.path.join(
     func_dir,
-    "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_from-boldref_to-T1w_mode-image_desc-coreg_xfm.txt",
+    "sub-24053_ses-1_task-rat_dir-PA_run-01_from-boldref_to-T1w_mode-image_desc-coreg_xfm.txt",
 )
 xfm = nit.linear.load(xfm, fmt="itk")
 t1_file = os.path.join(anat_dir, "sub-24053_ses-1_rec-norm_desc-preproc_T1w.nii.gz")
@@ -80,36 +80,36 @@ bg_img = xfm.apply(spatialimage=t1_file, reference=data_files[0])
 # Tedana outputs
 adaptive_mask_file = os.path.join(
     ted_dir,
-    "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_desc-adaptiveGoodSignal_mask.nii.gz",
+    "sub-24053_ses-1_task-rat_dir-PA_run-01_desc-adaptiveGoodSignal_mask.nii.gz",
 )
 mask = image.math_img("img >= 3", img=adaptive_mask_file)
 
 # Optimally combined data
 oc = masking.apply_mask(
-    os.path.join(ted_dir, "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_desc-optcom_bold.nii.gz"),
+    os.path.join(ted_dir, "sub-24053_ses-1_task-rat_dir-PA_run-01_desc-optcom_bold.nii.gz"),
     mask,
 )
 oc_z = (oc - np.mean(oc, axis=0)) / np.std(oc, axis=0)
 
 # Results from MEPCA
 mepca_mmix = pd.read_table(
-    os.path.join(ted_dir, "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_desc-PCA_mixing.tsv"),
+    os.path.join(ted_dir, "sub-24053_ses-1_task-rat_dir-PA_run-01_desc-PCA_mixing.tsv"),
 ).values
 oc_red = masking.apply_mask(
     os.path.join(
-        ted_dir, "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_desc-optcom_whitened_bold.nii.gz"
+        ted_dir, "sub-24053_ses-1_task-rat_dir-PA_run-01_desc-optcom_whitened_bold.nii.gz"
     ),
     mask,
 )
 
 # Results from MEICA
 meica_mmix = pd.read_table(
-    os.path.join(ted_dir, "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_desc-ICA_mixing.tsv"),
+    os.path.join(ted_dir, "sub-24053_ses-1_task-rat_dir-PA_run-01_desc-ICA_mixing.tsv"),
 ).values
 norm_weights = masking.apply_mask(
     os.path.join(
         ted_dir,
-        "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_desc-ICAAveragingWeights_components.nii.gz",
+        "sub-24053_ses-1_task-rat_dir-PA_run-01_desc-ICAAveragingWeights_components.nii.gz",
     ),
     mask,
 )
@@ -117,7 +117,7 @@ meica_beta_files = sorted(
     glob(
         os.path.join(
             ted_dir,
-            "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_echo-*_desc-ICA_components.nii.gz",
+            "sub-24053_ses-1_task-rat_dir-PA_run-01_echo-*_desc-ICA_components.nii.gz",
         ),
     ),
 )
@@ -128,7 +128,7 @@ r2_pred_beta_files = sorted(
     glob(
         os.path.join(
             ted_dir,
-            "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_echo-*_desc-ICAT2ModelPredictions_components.nii.gz",
+            "sub-24053_ses-1_task-rat_dir-PA_run-01_echo-*_desc-ICAT2ModelPredictions_components.nii.gz",
         ),
     ),
 )
@@ -138,7 +138,7 @@ s0_pred_beta_files = sorted(
     glob(
         os.path.join(
             ted_dir,
-            "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_echo-*_desc-ICAS0ModelPredictions_components.nii.gz",
+            "sub-24053_ses-1_task-rat_dir-PA_run-01_echo-*_desc-ICAS0ModelPredictions_components.nii.gz",
         ),
     ),
 )
@@ -147,20 +147,20 @@ s0_pred_betas = np.swapaxes(s0_pred_betas, 1, 2)
 
 # Component parameter estimates
 betas_file = os.path.join(
-    ted_dir, "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_desc-ICA_components.nii.gz"
+    ted_dir, "sub-24053_ses-1_task-rat_dir-PA_run-01_desc-ICA_components.nii.gz"
 )
 beta_maps = masking.apply_mask(betas_file, mask)
 
 # Multi-echo denoised data
 dn_data = masking.apply_mask(
     os.path.join(
-        ted_dir, "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_desc-denoised_bold.nii.gz"
+        ted_dir, "sub-24053_ses-1_task-rat_dir-PA_run-01_desc-denoised_bold.nii.gz"
     ),
     mask,
 )
 hk_data = masking.apply_mask(
     os.path.join(
-        ted_dir, "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_desc-optcomAccepted_bold.nii.gz"
+        ted_dir, "sub-24053_ses-1_task-rat_dir-PA_run-01_desc-optcomAccepted_bold.nii.gz"
     ),
     mask,
 )
@@ -168,20 +168,20 @@ hk_data = masking.apply_mask(
 # Post-processed data
 dn_t1c_data = masking.apply_mask(
     os.path.join(
-        ted_dir, "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_desc-optcomMIRDenoised_bold.nii.gz"
+        ted_dir, "sub-24053_ses-1_task-rat_dir-PA_run-01_desc-optcomMIRDenoised_bold.nii.gz"
     ),
     mask,
 )
 hk_t1c_data = masking.apply_mask(
     os.path.join(
-        ted_dir, "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_desc-optcomAcceptedMIRDenoised_bold.nii.gz"
+        ted_dir, "sub-24053_ses-1_task-rat_dir-PA_run-01_desc-optcomAcceptedMIRDenoised_bold.nii.gz"
     ),
     mask,
 )
 
 # Component table
 comp_tbl = pd.read_table(
-    os.path.join(ted_dir, "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_desc-tedana_metrics.tsv"),
+    os.path.join(ted_dir, "sub-24053_ses-1_task-rat_dir-PA_run-01_desc-tedana_metrics.tsv"),
     index_col="Component",
 )
 
@@ -254,7 +254,7 @@ for i_echo in range(n_echoes):
 axes[-1].set_xlabel("Time", fontsize=16)
 axes[-1].set_xlim(0, len(ts[i_echo]) - 1)
 fig.tight_layout()
-glue("fig_echo_timeseries2", fig, display=False)
+glue_figure("fig_echo_timeseries2", fig, display=False)
 ```
 
 ```{glue:figure} fig_echo_timeseries2
@@ -281,7 +281,7 @@ ax.tick_params(axis="both", which="major", labelsize=14)
 ax.set_xlim(0, 120)
 ax.set_ylim(0, 24000)
 fig.tight_layout()
-glue("fig_echo_scatter2", fig, display=False)
+glue_figure("fig_echo_scatter2", fig, display=False)
 ```
 
 ```{glue:figure} fig_echo_scatter2
@@ -318,7 +318,7 @@ plotting.plot_stat_map(
     figure=fig,
     axes=ax,
 )
-glue("fig_adaptive_mask", fig, display=False)
+glue_figure("fig_adaptive_mask", fig, display=False)
 ```
 
 ```{glue:figure} fig_adaptive_mask
@@ -346,7 +346,7 @@ ax.set_ylim(4, 8)
 ax.tick_params(axis="both", which="major", labelsize=14)
 
 fig.tight_layout()
-glue("fig_loglin_scatter", fig, display=False)
+glue_figure("fig_loglin_scatter", fig, display=False)
 ```
 
 ```{glue:figure} fig_loglin_scatter
@@ -412,7 +412,7 @@ ax.annotate(
 )
 
 fig.tight_layout()
-glue("fig_loglin_scatter_with_line", fig, display=False)
+glue_figure("fig_loglin_scatter_with_line", fig, display=False)
 ```
 
 ```{glue:figure} fig_loglin_scatter_with_line
@@ -458,7 +458,7 @@ ax.annotate(
 )
 
 fig.tight_layout()
-glue("fig_loglin_scatter_with_t2s", fig, display=False)
+glue_figure("fig_loglin_scatter_with_t2s", fig, display=False)
 ```
 
 ```{glue:figure} fig_loglin_scatter_with_t2s
@@ -491,7 +491,7 @@ ax.xaxis.get_major_ticks()[-1].set_pad(20)
 legend = ax.legend(frameon=True, fontsize=16)
 
 fig.tight_layout()
-glue("fig_scatter_with_t2s", fig, display=False)
+glue_figure("fig_scatter_with_t2s", fig, display=False)
 ```
 
 ```{glue:figure} fig_scatter_with_t2s
@@ -510,7 +510,7 @@ ax.set_ylabel("Weight", fontsize=16)
 ax.set_xlabel("Echo Time (ms)", fontsize=16)
 ax.tick_params(axis="both", which="major", labelsize=14)
 fig.tight_layout()
-glue("fig_optcom_weights", fig, display=False)
+glue_figure("fig_optcom_weights", fig, display=False)
 ```
 
 ```{glue:figure} fig_optcom_weights
@@ -549,7 +549,7 @@ ax.xaxis.get_major_ticks()[-1].set_pad(20)
 legend = ax.legend(frameon=True, fontsize=16)
 
 fig.tight_layout()
-glue("fig_scatter_with_optcom", fig, display=False)
+glue_figure("fig_scatter_with_optcom", fig, display=False)
 ```
 
 ```{glue:figure} fig_scatter_with_optcom
@@ -582,7 +582,7 @@ axes[-1].set_xticks([])
 axes[-1].set_xlim(0, len(ts[i_echo]) - 1)
 ax.tick_params(axis="both", which="major", labelsize=14)
 fig.tight_layout()
-glue("fig_echo_timeseries_with_optcom", fig, display=False)
+glue_figure("fig_echo_timeseries_with_optcom", fig, display=False)
 ```
 
 ```{glue:figure} fig_echo_timeseries_with_optcom
@@ -610,7 +610,7 @@ for comp_to_plot in [0, 1, 2]:
     axes[comp_to_plot].tick_params(axis="both", which="major", labelsize=12)
 
 fig.tight_layout()
-glue("fig_pca_timeseries", fig, display=False)
+glue_figure("fig_pca_timeseries", fig, display=False)
 ```
 
 ```{glue:figure} fig_pca_timeseries
@@ -635,7 +635,7 @@ ax.set_xlim(0, oc_z.shape[0] - 1)
 ax.set_xticks([])
 ax.set_xlabel("Time", fontsize=16)
 ax.tick_params(axis="both", which="major", labelsize=14)
-glue("fig_optcom_reduced_timeseries", fig, display=False)
+glue_figure("fig_optcom_reduced_timeseries", fig, display=False)
 ```
 
 ```{glue:figure} fig_optcom_reduced_timeseries
@@ -677,7 +677,7 @@ axes[0].tick_params(axis="both", which="major", labelsize=12)
 axes[1].tick_params(axis="both", which="major", labelsize=12)
 axes[2].tick_params(axis="both", which="major", labelsize=12)
 fig.tight_layout()
-glue("fig_ica_timeseries", fig, display=False)
+glue_figure("fig_ica_timeseries", fig, display=False)
 ```
 
 ```{glue:figure} fig_ica_timeseries
@@ -738,7 +738,7 @@ for i_comp, comp in enumerate(
     axes[i_comp].set_title(f"ICA Component {comp}", fontsize=16)
 
 fig.tight_layout()
-glue("fig_ica_weights", fig, display=False)
+glue_figure("fig_ica_weights", fig, display=False)
 ```
 
 ```{glue:figure} fig_ica_weights
@@ -784,7 +784,7 @@ axes[1].tick_params(axis="both", which="major", labelsize=12)
 axes[2].tick_params(axis="both", which="major", labelsize=12)
 fig.tight_layout()
 
-glue("fig_medn_timeseries", fig, display=False)
+glue_figure("fig_medn_timeseries", fig, display=False)
 ```
 
 ```{glue:figure} fig_medn_timeseries
@@ -828,7 +828,7 @@ axes[1].set_xlabel("Time", fontsize=16)
 axes[0].tick_params(axis="both", which="major", labelsize=12)
 axes[1].tick_params(axis="both", which="major", labelsize=12)
 fig.tight_layout()
-glue("fig_mir_timeseries", fig, display=False)
+glue_figure("fig_mir_timeseries", fig, display=False)
 ```
 
 ```{glue:figure} fig_mir_timeseries

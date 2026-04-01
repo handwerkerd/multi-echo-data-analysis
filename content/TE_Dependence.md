@@ -55,14 +55,17 @@ import matplotlib.pyplot as plt
 import nibabel as nb
 import numpy as np
 import seaborn as sns
-from book_utils import compute_te_dependence_statistics, predict_bold_signal
-from myst_nb import glue
+from book_utils import (
+    compute_te_dependence_statistics,
+    glue_figure,
+    predict_bold_signal,
+)
 from nilearn.glm import first_level
 from scipy import signal, stats
 
 sns.set_style("whitegrid")
 
-data_path = os.path.abspath("../DATA")
+data_path = os.path.abspath("../data")
 
 out_dir = os.path.join(data_path, "te-dependence")
 os.makedirs(out_dir, exist_ok=True)
@@ -187,7 +190,7 @@ axes[2, 1].axvline(t2s2, color="orange", alpha=0.5)
 leg = axes[2, 1].legend()
 
 fig.tight_layout()
-glue("fig_bold_nonbold_simulations", fig, display=False)
+glue_figure("fig_bold_nonbold_simulations", fig, display=False)
 ```
 
 ```{glue:figure} fig_bold_nonbold_simulations
@@ -383,7 +386,7 @@ axes[1].set_xlim(0, np.max(echo_times))
 legend = axes[1].legend()
 
 fig.tight_layout()
-glue("fig_fitted_r2_curves", fig, display=False)
+glue_figure("fig_fitted_r2_curves", fig, display=False)
 ```
 
 ```{glue:figure} fig_fitted_r2_curves
@@ -468,7 +471,7 @@ ax.plot(component, label="Component", color="black", alpha=0.5, linewidth=5)
 ax.set_xlim(0, n_trs - 1)
 ax.set_xlabel("Time (TR)")
 leg = ax.legend(fontsize=14, ncol=3)
-glue("fig_component_curves", fig, display=False)
+glue_figure("fig_component_curves", fig, display=False)
 ```
 
 ```{glue:figure} fig_component_curves
@@ -500,7 +503,7 @@ for i_echo, echo in enumerate(echoes_to_plot):
 
 axes[-1].set_xlabel("Time", fontsize=16)
 axes[-1].set_xlim(0, n_trs - 1)
-glue("fig_component_curves_2", fig, display=False)
+glue_figure("fig_component_curves_2", fig, display=False)
 ```
 
 ```{glue:figure} fig_component_curves_2
@@ -529,7 +532,7 @@ ax.set_xticks(echoes_to_plot)
 ax.set_xlim(0, np.max(echo_times))
 ax.tick_params(axis="both", which="major", labelsize=14)
 fig.tight_layout()
-glue("fig_component_curves_3", fig, display=False)
+glue_figure("fig_component_curves_3", fig, display=False)
 ```
 
 ```{glue:figure} fig_component_curves_3
@@ -559,7 +562,7 @@ ax.plot(echo_times, pred_S0, label=r"$\rho$ = {:.02f}".format(F_S0[0]), alpha=0)
 ax.set_xlim(0, np.max(echo_times))
 ax.set_xlabel("Echo time (ms)")
 leg = ax.legend(fontsize=14, ncol=2)
-glue("fig_component_curves_4", fig, display=False)
+glue_figure("fig_component_curves_4", fig, display=False)
 ```
 
 ```{glue:figure} fig_component_curves_4

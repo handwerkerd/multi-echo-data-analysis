@@ -20,19 +20,21 @@ from glob import glob
 import numpy as np
 from nilearn.maskers import NiftiMasker
 
-data_path = os.path.abspath('../DATA')
+data_path = os.path.abspath('../data')
 ```
 
 ```{code-cell} ipython3
+raise ValueError("SKIP")
 func_dir = os.path.join(data_path, "ds006185/sub-24053/ses-1/func/")
 data_files = sorted(
     glob(
         os.path.join(
             func_dir,
-            "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_echo-*_part-mag_desc-preproc_bold.nii.gz",
+            "sub-24053_ses-1_task-rat_dir-PA_run-01_echo-*_part-mag_desc-preproc_bold.nii.gz",
         ),
     ),
 )
+assert len(data_files) == 5
 echo_times = []
 for f in data_files:
     json_file = f.replace('.nii.gz', '.json')
@@ -41,11 +43,11 @@ for f in data_files:
     echo_times.append(metadata['EchoTime'] * 1000)
 mask_file = os.path.join(
     func_dir,
-    "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_part-mag_desc-brain_mask.nii.gz"
+    "sub-24053_ses-1_task-rat_dir-PA_run-01_part-mag_desc-brain_mask.nii.gz"
 )
 confounds_file = os.path.join(
     func_dir,
-    "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_part-mag_desc-confounds_timeseries.tsv",
+    "sub-24053_ses-1_task-rat_dir-PA_run-01_part-mag_desc-confounds_timeseries.tsv",
 )
 
 out_dir = os.path.join(data_path, "pySPFM")

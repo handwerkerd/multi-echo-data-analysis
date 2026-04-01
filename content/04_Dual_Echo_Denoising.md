@@ -33,26 +33,25 @@ from glob import glob
 
 import matplotlib.pyplot as plt
 import nibabel as nb
-from book_utils import regress_one_image_out_of_another
-from myst_nb import glue
+from book_utils import glue_figure, regress_one_image_out_of_another
 from nilearn import plotting
 
-data_path = os.path.abspath('../DATA')
+data_path = os.path.abspath('../data')
 ```
 
 ```{code-cell} ipython3
 func_dir = os.path.join(data_path, "ds006185/sub-24053/ses-1/func/")
 te1_img = os.path.join(
     func_dir,
-    "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_echo-1_part-mag_desc-preproc_bold.nii.gz",
+    "sub-24053_ses-1_task-rat_dir-PA_run-01_echo-1_part-mag_desc-preproc_bold.nii.gz",
 )
 te2_img = os.path.join(
     func_dir,
-    "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_echo-2_part-mag_desc-preproc_bold.nii.gz",
+    "sub-24053_ses-1_task-rat_dir-PA_run-01_echo-2_part-mag_desc-preproc_bold.nii.gz",
 )
 mask_img = os.path.join(
     func_dir,
-    "sub-24053_ses-1_task-rat_rec-nordic_dir-PA_run-01_part-mag_desc-brain_mask.nii.gz"
+    "sub-24053_ses-1_task-rat_dir-PA_run-01_part-mag_desc-brain_mask.nii.gz"
 )
 denoised_img = regress_one_image_out_of_another(te2_img, te1_img, mask_img)
 ```
@@ -71,7 +70,7 @@ axes[1].xaxis.set_visible(False)
 axes[0].spines["bottom"].set_visible(False)
 axes[1].spines["bottom"].set_visible(False)
 fig.tight_layout()
-glue("figure_dual_echo_results", fig, display=False)
+glue_figure("figure_dual_echo_results", fig, display=False)
 ```
 
 ```{glue:figure} figure_dual_echo_results
