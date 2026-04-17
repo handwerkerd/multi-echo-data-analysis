@@ -82,7 +82,7 @@ os.makedirs(out_dir, exist_ok=True)
 data = load_pafin(data_path)
 ted_dir = os.path.join(data_path, "tedana")
 n_echoes = len(data['echo_times'])
-data['echo_times'] = [int(np.round(te)) for te in data['echo_times']]
+data['echo_times'] = [int(np.round(te * 1000)) for te in data['echo_times']]
 
 pal = sns.color_palette("cubehelix", n_echoes)
 
@@ -167,7 +167,7 @@ glue_figure("fig_brain_decay", fig, display=False)
 plt.style.use("default")
 ```
 
-```{glue:figure} fig_brain_decay
+```{figure} figures/fig_brain_decay.png
 :name: fig_brain_decay
 :align: center
 
@@ -198,7 +198,7 @@ fig.tight_layout()
 glue_figure("fig_echo_scatter", fig, display=False)
 ```
 
-```{glue:figure} fig_echo_scatter
+```{figure} figures/fig_echo_scatter.png
 :name: fig_echo_scatter
 :align: center
 
@@ -228,7 +228,7 @@ fig.tight_layout()
 glue_figure("fig_echo_timeseries", fig, display=False)
 ```
 
-```{glue:figure} fig_echo_timeseries
+```{figure} figures/fig_echo_timeseries.png
 :name: fig_echo_timeseries
 :align: center
 
@@ -306,7 +306,7 @@ fig.tight_layout()
 glue_figure("fig_signal_decay_single-echo", fig, display=False)
 ```
 
-```{glue:figure} fig_signal_decay_single-echo
+```{figure} figures/fig_signal_decay_single-echo.png
 :name: fig_signal_decay_single-echo
 :align: center
 
@@ -365,7 +365,7 @@ fig.tight_layout()
 glue_figure("fig_signal_decay_contrast", fig, display=False)
 ```
 
-```{glue:figure} fig_signal_decay_contrast
+```{figure} figures/fig_signal_decay_contrast.png
 :name: fig_signal_decay_contrast
 :align: center
 
@@ -1108,7 +1108,7 @@ leg = ax.legend()
 glue_figure("fig_t2s_bold_single-echo", fig, display=False)
 ```
 
-```{glue:figure} fig_t2s_bold_single-echo
+```{figure} figures/fig_t2s_bold_single-echo.png
 :name: fig_t2s_bold_single-echo
 :align: center
 
@@ -1142,7 +1142,7 @@ leg = ax.legend()
 glue_figure("fig_s0_bold_single-echo", fig, display=False)
 ```
 
-```{glue:figure} fig_s0_bold_single-echo
+```{figure} figures/fig_s0_bold_single-echo.png
 :name: fig_s0_bold_single-echo
 :align: center
 
